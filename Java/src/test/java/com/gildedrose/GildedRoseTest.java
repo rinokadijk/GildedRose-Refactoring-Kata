@@ -44,7 +44,27 @@ class GildedRoseTest {
             "Backstage passes to a TAFKAL80ETC concert, 14, 21\n" +
             "Backstage passes to a TAFKAL80ETC concert, 9, 50\n" +
             "Backstage passes to a TAFKAL80ETC concert, 4, 50\n" +
-            "Conjured Mana Cake, 2, 5\n\n"));
+            "Conjured Mana Cake, 2, 4\n\n"));
+    }
+
+    @Test
+    void assertBoundariesAfterFiftyDays() {
+        final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(baos));
+        TexttestFixture.main(new String[]{"50"});
+        final String lastDayString = baos.toString().substring(baos.toString().length() - 370, baos.toString().length());
+        assertThat(lastDayString, is( "-------- day 50 --------\n" +
+            "name, sellIn, quality\n" +
+            "+5 Dexterity Vest, -40, 0\n" +
+            "Aged Brie, -48, 50\n" +
+            "Elixir of the Mongoose, -45, 0\n" +
+            "Sulfuras, Hand of Ragnaros, 0, 80\n" +
+            "Sulfuras, Hand of Ragnaros, -1, 80\n" +
+            "Backstage passes to a TAFKAL80ETC concert, -35, 0\n" +
+            "Backstage passes to a TAFKAL80ETC concert, -40, 0\n" +
+            "Backstage passes to a TAFKAL80ETC concert, -45, 0\n" +
+            "Conjured Mana Cake, -47, 0\n" +
+            "\n"));
     }
 
     @Test
@@ -169,7 +189,7 @@ class GildedRoseTest {
 
     @Test
     void whenConjured_ThenAtEndOfDayQualityDecreasedByTwo() {
-        Item[] items = new Item[]{new Item("Conjured", ANY_VALUE, 2)};
+        Item[] items = new Item[]{new Item("Conjured Mana Cake", ANY_VALUE, 2)};
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(0, app.items[0].quality);
@@ -177,7 +197,7 @@ class GildedRoseTest {
 
     @Test
     void whenConjured_ThenAtEndOfDayQualityNeverDropsBelowZero() {
-        Item[] items = new Item[]{new Item("Conjured", ANY_VALUE, 0)};
+        Item[] items = new Item[]{new Item("Conjured Mana Cake", ANY_VALUE, 0)};
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(0, app.items[0].quality);

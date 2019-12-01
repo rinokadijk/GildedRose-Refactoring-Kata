@@ -48,7 +48,7 @@ class Good extends Item {
                 return new BackstagePasses(item.name, item.sellIn, item.quality);
             case "Aged Brie":
                 return new AgedBrie(item.name, item.sellIn, item.quality);
-            case "Conjured":
+            case "Conjured Mana Cake":
                 return new Conjured(item.name, item.sellIn, item.quality);
             default:
                 return new Good(item.name, item.sellIn, item.quality);
