@@ -6,13 +6,17 @@ class Sulfuras extends Good {
         super(name, sellIn, quality);
     }
 
+    /**
+     * Sulfuras adjustQuality is implemented as a no-op
+     */
     @Override
     public void adjustQuality() {
-        return;
     }
 
+    /**
+     * Sulfuras adjustSellDate is implemented as a no-op
+     */
     @Override
     public void adjustSellDate() {
-        return;
     }
 }

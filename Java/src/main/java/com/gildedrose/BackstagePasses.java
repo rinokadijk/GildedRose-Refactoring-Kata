@@ -2,25 +2,32 @@ package com.gildedrose;
 
 class BackstagePasses extends Good {
 
-    public BackstagePasses(String name, int sellIn, int quality) {
+    BackstagePasses(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }
 
     @Override
     public void adjustQuality() {
-        if (this.sellIn <= 0) {
+        if (isPastSellDate()) {
             this.quality = 0;
             return;
         }
-
         this.quality++;
-        if (this.sellIn < 11) {
-            this.quality++;
-        }
+        increaseQualityTenDaysBeforeConcert();
+        increaseQualityFiveDaysBeforeConcert();
+        setQualityWithinBounds();
+    }
+
+    private void increaseQualityFiveDaysBeforeConcert() {
         if (this.sellIn < 6) {
             this.quality++;
         }
-        setQualityWithinBounds();
+    }
+
+    private void increaseQualityTenDaysBeforeConcert() {
+        if (this.sellIn < 11) {
+            this.quality++;
+        }
     }
 
     @Override

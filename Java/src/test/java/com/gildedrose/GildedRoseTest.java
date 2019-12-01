@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 class GildedRoseTest {
@@ -169,7 +168,6 @@ class GildedRoseTest {
     }
 
     @Test
-    @Disabled
     void whenConjured_ThenAtEndOfDayQualityDecreasedByTwo() {
         Item[] items = new Item[]{new Item("Conjured", ANY_VALUE, 2)};
         GildedRose app = new GildedRose(items);
@@ -178,7 +176,6 @@ class GildedRoseTest {
     }
 
     @Test
-    @Disabled
     void whenConjured_ThenAtEndOfDayQualityNeverDropsBelowZero() {
         Item[] items = new Item[]{new Item("Conjured", ANY_VALUE, 0)};
         GildedRose app = new GildedRose(items);

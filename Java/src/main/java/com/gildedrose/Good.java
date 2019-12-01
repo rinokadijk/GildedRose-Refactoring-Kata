@@ -5,13 +5,9 @@ package com.gildedrose;
  */
 class Good extends Item {
 
-    public Good(String name, int sellIn, int quality) {
+    Good(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
-        this.checkConstraint(this);
-    }
-
-    private void checkConstraint(Item item) {
-        checkQualityWithinBounds(item);
+        this.checkQualityWithinBounds(this);
     }
 
     private void checkQualityWithinBounds(Item item) {
@@ -22,13 +18,17 @@ class Good extends Item {
 
     public void adjustQuality() {
         this.quality--;
-        if (this.sellIn <= 0) {
+        if (isPastSellDate()) {
             this.quality--;
         }
         setQualityWithinBounds();
     }
 
-    public void setQualityWithinBounds() {
+    boolean isPastSellDate() {
+        return this.sellIn <= 0;
+    }
+
+    void setQualityWithinBounds() {
         this.quality = Math.min(50, this.quality);
         this.quality = Math.max(0, this.quality);
     }
