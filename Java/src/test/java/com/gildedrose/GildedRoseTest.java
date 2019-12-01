@@ -216,7 +216,6 @@ class GildedRoseTest {
     }
 
     @Test
-    @Disabled
     void whenItemReplacedDuringDay_ThenUseValuesFromSystemStartup() {
         Item[] items = new Item[]{new Item(ANY_ITEM, ANY_VALUE, 1)};
         GildedRose app = new GildedRose(items);
