@@ -7,6 +7,14 @@ class GildedRose {
 
     public GildedRose(Item[] items) {
         this.items = Arrays.copyOf(items, items.length);
+        final boolean qualityWithinBoundsAndOrEmptyName = Arrays.stream(items).allMatch(this::itemPrecondition);
+        if (!qualityWithinBoundsAndOrEmptyName) {
+            throw new IllegalStateException("Quality of item should be between 0  - 50. And name must not be null");
+        }
+    }
+
+    private boolean itemPrecondition(Item item) {
+        return item.name != null && item.quality >= 0 && (item.quality <= 50 || "Sulfuras, Hand of Ragnaros".equals(item.name));
     }
 
     public void updateQuality() {

@@ -113,18 +113,16 @@ class GildedRoseTest {
     }
 
     @Test
-    @Disabled
     void whenSulfuras_ThenAtEndOfDayQualityIsSameAsYesterday() {
-        Item[] items = new Item[]{new Item("Sulfuras", ANY_VALUE, 80)};
+        Item[] items = new Item[]{new Item("Sulfuras, Hand of Ragnaros", ANY_VALUE, 80)};
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(80, app.items[0].quality);
     }
 
     @Test
-    @Disabled
     void whenSulfuras_ThenAtEndOfDaySellInIsSameAsYesterday() {
-        Item[] items = new Item[]{new Item("Sulfuras", Integer.MIN_VALUE, ANY_VALUE)};
+        Item[] items = new Item[]{new Item("Sulfuras, Hand of Ragnaros", Integer.MIN_VALUE, ANY_VALUE)};
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(Integer.MIN_VALUE, app.items[0].sellIn);
@@ -189,7 +187,6 @@ class GildedRoseTest {
     }
 
     @Test
-    @Disabled
     void whenNotSulfurasAndQualityAboveFifty_ThenIllegalStateExceptionAtSystemStartup() {
         Item[] items = new Item[]{new Item(ANY_ITEM, ANY_VALUE, 51)};
         assertThrows(IllegalStateException.class,
@@ -198,7 +195,6 @@ class GildedRoseTest {
     }
 
     @Test
-    @Disabled
     void whenQualityNegative_ThenIllegalStateExceptionAtSystemStartup() {
         Item[] items = new Item[]{new Item(ANY_ITEM, ANY_VALUE, -1)};
         assertThrows(IllegalStateException.class,
@@ -207,7 +203,6 @@ class GildedRoseTest {
     }
 
     @Test
-    @Disabled
     void whenNameNull_ThenIllegalStateExceptionAtSystemStartup() {
         Item[] items = new Item[]{new Item(null, ANY_VALUE, 0)};
         assertThrows(IllegalStateException.class,
