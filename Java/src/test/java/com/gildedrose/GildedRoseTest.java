@@ -22,7 +22,7 @@ class GildedRoseTest {
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
         TexttestFixture.main(new String[]{});
-        assertThat("OMGHAI!\n" +
+        assertThat( baos.toString(), is("OMGHAI!\n" +
             "-------- day 0 --------\n" +
             "name, sellIn, quality\n" +
             "+5 Dexterity Vest, 10, 20\n" +
@@ -45,7 +45,7 @@ class GildedRoseTest {
             "Backstage passes to a TAFKAL80ETC concert, 14, 21\n" +
             "Backstage passes to a TAFKAL80ETC concert, 9, 50\n" +
             "Backstage passes to a TAFKAL80ETC concert, 4, 50\n" +
-            "Conjured Mana Cake, 2, 5\n\n", is(baos.toString()));
+            "Conjured Mana Cake, 2, 5\n\n"));
     }
 
     @Test
