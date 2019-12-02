@@ -8,9 +8,9 @@ class Conjured extends Good {
 
     @Override
     public void adjustQuality() {
-        this.quality-=2;
+        this.quality -= 2;
         if (isPastSellDate()) {
-            this.quality-=2;
+            this.quality -= 2;
         }
         setQualityWithinBounds();
     }

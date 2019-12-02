@@ -5,13 +5,16 @@ package com.gildedrose;
  */
 class Good extends Item {
 
+    private static final int UPPER_QUALITY_BOUND = 50;
+    private static final int LOWER_QUALITY_BOUND = 0;
+
     Good(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
         this.checkQualityWithinBounds(this);
     }
 
     private void checkQualityWithinBounds(Item item) {
-        if (item.quality < 0 || (item.quality > 50 && !"Sulfuras, Hand of Ragnaros".equals(item.name))) {
+        if (item.quality < LOWER_QUALITY_BOUND || (item.quality > UPPER_QUALITY_BOUND && !"Sulfuras, Hand of Ragnaros".equals(item.name))) {
             throw new IllegalStateException("Name must not be null");
         }
     }
@@ -29,8 +32,8 @@ class Good extends Item {
     }
 
     void setQualityWithinBounds() {
-        this.quality = Math.min(50, this.quality);
-        this.quality = Math.max(0, this.quality);
+        this.quality = Math.min(UPPER_QUALITY_BOUND, this.quality);
+        this.quality = Math.max(LOWER_QUALITY_BOUND, this.quality);
     }
 
     public void adjustSellDate() {
