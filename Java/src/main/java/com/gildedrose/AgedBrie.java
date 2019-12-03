@@ -15,8 +15,4 @@ class AgedBrie extends Good {
         setQualityWithinBounds();
     }
 
-    @Override
-    public void adjustSellDate() {
-        super.adjustSellDate();
-    }
 }

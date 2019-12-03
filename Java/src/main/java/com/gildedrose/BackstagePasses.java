@@ -33,8 +33,4 @@ class BackstagePasses extends Good {
         }
     }
 
-    @Override
-    public void adjustSellDate() {
-        super.adjustSellDate();
-    }
 }

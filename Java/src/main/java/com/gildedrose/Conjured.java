@@ -15,8 +15,4 @@ class Conjured extends Good {
         setQualityWithinBounds();
     }
 
-    @Override
-    public void adjustSellDate() {
-        super.adjustSellDate();
-    }
 }
