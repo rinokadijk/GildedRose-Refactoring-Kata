@@ -18,8 +18,8 @@ class Good extends Item {
         this.checkQualityWithinBounds(this);
     }
 
-    private void checkQualityWithinBounds(Item item) {
-        if (item.quality < LOWER_QUALITY_BOUND || (item.quality > UPPER_QUALITY_BOUND && !SULFURAS.equals(item.name))) {
+    void checkQualityWithinBounds(Item item) {
+        if (item.quality < LOWER_QUALITY_BOUND || item.quality > UPPER_QUALITY_BOUND) {
             throw new IllegalStateException("Name must not be null");
         }
     }

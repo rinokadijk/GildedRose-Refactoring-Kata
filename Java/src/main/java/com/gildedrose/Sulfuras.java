@@ -19,4 +19,11 @@ class Sulfuras extends Good {
     @Override
     public void adjustSellDate() {
     }
+
+    /**
+     * Sulfuras checkQualityWithinBounds is implemented as a no-op (quality can be out of bounds)
+     */
+    @Override
+    void checkQualityWithinBounds(Item item) {
+    }
 }
