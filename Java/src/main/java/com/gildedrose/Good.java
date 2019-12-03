@@ -20,7 +20,7 @@ class Good extends Item {
 
     void checkQualityWithinBounds(Item item) {
         if (item.quality < LOWER_QUALITY_BOUND || item.quality > UPPER_QUALITY_BOUND) {
-            throw new IllegalStateException("Name must not be null");
+            throw new IllegalStateException("Quality must be within bounds [0-50]");
         }
     }
 
